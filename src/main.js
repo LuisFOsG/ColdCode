@@ -1,7 +1,6 @@
 /* eslint-disable consistent-return */
 /* eslint-disable import/no-unresolved */
 /* eslint-disable no-restricted-globals */
-
 import './style.css';
 import Split from 'split-grid';
 import { encode, decode } from 'js-base64';
@@ -14,6 +13,8 @@ import JsWorker from 'monaco-editor/esm/vs/language/typescript/ts.worker?worker'
 const $ = (selector) => document.querySelector(selector);
 
 const $iframe = $('#iframe');
+const $grid = $('.grid');
+
 const $js = $('#js');
 const $css = $('#css');
 const $html = $('#html');
@@ -35,12 +36,12 @@ const configEditor = {
   roundedSelection: false,
   automaticLayout: true,
   fontLigatures: true,
-  contextmenu: false,
   fixedOverflowWidgets: true,
   lineNumbers: 'on',
   lineNumbersMinChars: 2,
   lineDecorationsWidth: 0,
   renderLineHighlight: 'none',
+  wordWrap: 'on',
   minimap: {
     enabled: false,
   },
@@ -117,6 +118,35 @@ Split({
     track: 1,
     element: $('.horizontal-gutter'),
   }],
+});
+
+/* ============================================== */
+
+document.addEventListener('keydown', (event) => {
+  if (event.ctrlKey && event.altKey && event.key === '1') {
+    $grid.style.setProperty('grid-template-columns', '1fr 5px 0');
+    $grid.style.setProperty('grid-template-rows', '1fr 5px 0');
+  }
+
+  if (event.ctrlKey && event.altKey && event.key === '2') {
+    $grid.style.setProperty('grid-template-columns', '0 5px 1fr');
+    $grid.style.setProperty('grid-template-rows', '1fr 5px 0');
+  }
+
+  if (event.ctrlKey && event.altKey && event.key === '3') {
+    $grid.style.setProperty('grid-template-columns', '1fr 5px 0');
+    $grid.style.setProperty('grid-template-rows', '0 5px 1fr');
+  }
+
+  if (event.ctrlKey && event.altKey && event.key === '4') {
+    $grid.style.setProperty('grid-template-columns', '0 5px 1fr');
+    $grid.style.setProperty('grid-template-rows', '0 5px 1fr');
+  }
+
+  if (event.ctrlKey && event.altKey && event.key === '5') {
+    $grid.style.setProperty('grid-template-columns', '1fr 5px 1fr');
+    $grid.style.setProperty('grid-template-rows', '1fr 5px 1fr');
+  }
 });
 
 init();
