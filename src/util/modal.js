@@ -2,7 +2,7 @@
 /* eslint-disable no-unused-expressions */
 /* eslint-disable import/prefer-default-export */
 
-const $ = (selector) => document.querySelector(selector);
+import { $ } from './dom';
 
 const stateModal = {
   opacity: '0',

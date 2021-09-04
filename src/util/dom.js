@@ -1,5 +1,6 @@
 /* eslint-disable linebreak-style */
-/* eslint-disable import/prefer-default-export */
+// eslint-disable-next-line import/prefer-default-export
+export const $ = (selector) => document.querySelector(selector);
 
 export const createHTML = ({ html, css, js }) => `
 <!DOCTYPE html>
